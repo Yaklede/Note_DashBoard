@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <thead>
+        <th>#</th>
+        <th>board</th>
+    </thead>
+
+    <tbody th:each="board : ${boards}">
+        <tb th:text="${board.title}">title</tb>
+        <tb th:text="${board.content}">content</tb>
+    </tbody>
+
+    <div>
+        <thead>
+            <th>Page Number</th>
+        </thead>
+
+        <tbody th:each="index : ${#numbers.sequence(1,pages)}">
+            <a th:href="@{/test (page=${index}) }"><td th:text="${index}"></td></a>
+        </tbody>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+1.엔티티 설계
+
+//BaseTimeEntity // 등록시간, 수정시간 
+
+Member // pk id, login id, password , username
+
+Board // pk id, board_title, board_Content, board_category
+
+Category // pk_id, category_name, category_Dtype 
+
+Member <1 : N> Board <N:1> Category
+===========================================================
+2. 리포지토리 설계 // 
+category를 통해 나눠서 쿼리
+ex) (select b from Board b where b.category = :category) 
+//@param을 통해 파라미터 넘기고
+
+html에서 각 카테고리 선택시 request로 category 파리미터를 넘김  
+
+상수 생성 고려 
+Dtype "B","S","I" 로 관리 
+
+category = Business 
+category = Social
+category = Important
+===========================================================
+3.서비스 기능 구현
+
+MemberService = 회원가입, 로그인, 로그인_중복체킹 //valid검증 필요
+
+BoardService = Member데이터를 가지고 createBoard //valid검증 필요  
+deleteBoard, UpdateBoard
+
+member를 CURD 할 수 있고 member는 board를 각 카테고리 별로 생성 할 수 있다.
+
+board는 CRUD;
+===========================================================
+4. view 랜더링
+각 카테고리 별로 페이징 처리 9개씩 Page<> 로 받아서 map으로 DTO 변환 후 content를 뽑아서 넘기면 된다.
+================================
+
+ 
