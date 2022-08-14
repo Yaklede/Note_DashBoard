@@ -38,12 +38,12 @@ public class BoardController {
     @GetMapping("/board/Business/{memberId}")
     public String boardBusiness(@PathVariable("memberId")Long memberId,@ModelAttribute Board board,Model model) {
         List<Board> findByBusiness = boardRepository.findByCategory(CategoryType.BUSINESS);
+        String type = CategoryType.BUSINESS.getDisplayValue();
         Optional<Member> findMember = memberRepository.findById(memberId);
         Member member = findMember.get();
 
         model.addAttribute("member", member);
         model.addAttribute("boards", findByBusiness);
-        String type = "b";
         model.addAttribute("type", type);
         return "home";
     }
@@ -51,12 +51,12 @@ public class BoardController {
     @GetMapping("/board/Social/{memberId}")
     public String boardSocial(@ModelAttribute Board board,@PathVariable("memberId")Long memberId,Model model) {
         List<Board> findByBusiness = boardRepository.findByCategory(CategoryType.SOCIAL);
+        String type = CategoryType.SOCIAL.getDisplayValue();
         Optional<Member> findMember = memberRepository.findById(memberId);
         Member member = findMember.get();
 
         model.addAttribute("member", member);
         model.addAttribute("boards", findByBusiness);
-        String type = "s";
         model.addAttribute("type", type);
         return "home";
     }
@@ -64,12 +64,12 @@ public class BoardController {
     @GetMapping("/board/Important/{memberId}")
     public String boardImportant(@ModelAttribute Board board,@PathVariable("memberId")Long memberId,Model model) {
         List<Board> findByBusiness = boardRepository.findByCategory(CategoryType.IMPORTANT);
+        String type = CategoryType.IMPORTANT.getDisplayValue();
         Optional<Member> findMember = memberRepository.findById(memberId);
         Member member = findMember.get();
 
         model.addAttribute("member", member);
         model.addAttribute("boards", findByBusiness);
-        String type = "i";
         model.addAttribute("type", type);
         return "home";
     }

@@ -34,7 +34,7 @@ public class TestController {
         boardRepository.save(board);
 
         Page<Board> page = boardRepository.findByCategoryPage(CategoryType.BUSINESS, pageable);
-        Page<BoardDto> map = page.map(board1 -> new BoardDto(board1.getTitle(), board1.getContent()));
+        Page<BoardDto> map = page.map(board1 -> new BoardDto(board1.getTitle(), board1.getContent(),board1.getCategoryType(),board1.getCreatedDate()));
         List<BoardDto> boards = map.getContent();
         int totalPages = map.getTotalPages();
         model.addAttribute("boards", boards);

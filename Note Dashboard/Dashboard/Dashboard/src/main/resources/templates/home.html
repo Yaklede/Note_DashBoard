@@ -21,13 +21,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a th:href="@{/board/Business/{memberId} (memberId=${member.id})}" th:classappend="${type == 'b'} ? 'active' : ''" href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-business"> <i class="icon-briefcase mr-1"></i><span class="d-none d-md-block">Business</span></a>
+            <a th:href="@{/board/Business/{memberId} (memberId=${member.id})}" th:classappend="${type == 'Business'} ? 'active' : ''" href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-business"> <i class="icon-briefcase mr-1"></i><span class="d-none d-md-block">Business</span></a>
         </li>
         <li class="nav-item">
-            <a th:href="@{/board/Social/{memberId} (memberId=${member.id})}" th:classappend="${type == 's'} ? 'active' : ''" href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-social"> <i class="icon-share-alt mr-1"></i><span class="d-none d-md-block">Social</span></a>
+            <a th:href="@{/board/Social/{memberId} (memberId=${member.id})}" th:classappend="${type == 'Social'} ? 'active' : ''" href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-social"> <i class="icon-share-alt mr-1"></i><span class="d-none d-md-block">Social</span></a>
         </li>
         <li class="nav-item">
-            <a th:href="@{/board/Important/{memberId} (memberId=${member.id})}" th:classappend="${type == 'i'} ? 'active' : ''" href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-important"> <i class="icon-tag mr-1"></i><span class="d-none d-md-block">Important</span></a>
+            <a th:href="@{/board/Important/{memberId} (memberId=${member.id})}" th:classappend="${type == 'Important'} ? 'active' : ''" href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-important"> <i class="icon-tag mr-1"></i><span class="d-none d-md-block">Important</span></a>
         </li>
         <li class="nav-item ml-auto">
             <a href="javascript:void(0)"  class="nav-link btn-primary rounded-pill d-flex align-items-center px-3" id="add-notes"> <i class="icon-note m-1"></i><span class="d-none d-md-block font-14">Add Notes</span></a>
