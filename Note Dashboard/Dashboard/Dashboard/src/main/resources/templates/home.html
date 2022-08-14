@@ -41,7 +41,7 @@
                 <div class="card card-body">
                     <span class="side-stick"></span>
                     <h5 th:text="${board.title}" class="note-title text-truncate w-75 mb-0" data-noteheading="Give Review for design">Give Review for design <i class="point fa fa-circle ml-1 font-10"></i></h5>
-                    <p  th:text="${board.createdDate}" class="note-date font-12 text-muted">02 January 2000</p>
+                    <p  th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd')}" class="note-date font-12 text-muted">02 January 2000</p>
                     <div class="note-content">
                         <p th:text="${board.content}" class="note-inner-content text-muted" data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.">Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.</p>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="card card-body">
                         <span class="side-stick"></span>
                         <h5 th:text=${board.title} class="note-title text-truncate w-75 mb-0" data-noteheading="Nightout with friends">Nightout with friends <i class="point fa fa-circle ml-1 font-10"></i></h5>
-                        <p th:text="${board.createdDate}" class="note-date font-12 text-muted">01 August 1999</p>
+                        <p th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd')}" class="note-date font-12 text-muted">01 August 1999</p>
                         <div class="note-content">
                             <p th:text="${board.content}" class="note-inner-content text-muted" data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.">Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.</p>
                         </div>
@@ -122,7 +122,7 @@
                     <div class="card card-body">
                         <span class="side-stick"></span>
                         <h5 th:text="${board.title}" class="note-title text-truncate w-75 mb-0" data-noteheading="Launch new template">Launch new template <i class="point fa fa-circle ml-1 font-10"></i></h5>
-                        <p th:text="${board.createdDate}" class="note-date font-12 text-muted">21 January 2015</p>
+                        <p th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd')}" class="note-date font-12 text-muted">21 January 2015</p>
                         <div class="note-content">
                             <p th:text="${board.content}" class="note-inner-content text-muted" data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.">Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.</p>
                         </div>
