@@ -26,8 +26,6 @@ public class BoardController {
 
     @PostMapping("/board/add/{memberId}")
     public String boardAdd(@ModelAttribute Board board, @PathVariable("memberId") Long memberId) {
-
-
         Optional<Member> findMember = memberRepository.findById(memberId);
         Member member = findMember.get();
 
@@ -76,39 +74,21 @@ public class BoardController {
 
     @GetMapping("/board/ChangeBusiness/{boardId}")
     public String boardChangeBusiness(@PathVariable("boardId") Long boardId) {
-
-        Optional<Board> findBoard = boardRepository.findById(boardId);
-        Board board = findBoard.get();
         boardRepository.updateBoardCategoryType(CategoryType.BUSINESS, boardId);
-
-        log.info("board = {} ", board.getCategoryType());
 
         return "redirect:/";
     }
 
     @GetMapping("/board/ChangeSocial/{boardId}")
     public String boardChangeSocial(@PathVariable("boardId")Long boardId) {
-        Optional<Board> findBoard = boardRepository.findById(boardId);
-        Board board = findBoard.get();
         boardRepository.updateBoardCategoryType(CategoryType.SOCIAL, boardId);
-
-        log.info("board = {} ", board.getCategoryType());
-
-        Optional<Board> findBoard2 = boardRepository.findById(boardId);
-
-        log.info("test = {}", findBoard2.get().getCategoryType());
 
         return "redirect:/";
     }
 
     @GetMapping("/board/ChangeImportant/{boardId}")
-    public String boardChangeImportant(@PathVariable("boardId")Long boardId) {
-        Optional<Board> findBoard = boardRepository.findById(boardId);
-        Board board = findBoard.get();
+    public String boardChangeImportant(@PathVariable("boardId")Long boardId) { ;
         boardRepository.updateBoardCategoryType(CategoryType.IMPORTANT, boardId);
-
-        log.info("board = {} ", board.getCategoryType());
-
         return "redirect:/";
     }
 
