@@ -32,6 +32,12 @@
         <li class="nav-item ml-auto">
             <a href="javascript:void(0)"  class="nav-link btn-primary rounded-pill d-flex align-items-center px-3" id="add-notes"> <i class="icon-note m-1"></i><span class="d-none d-md-block font-14">Add Notes</span></a>
         </li>
+        <li>
+            <form th:object="${orderSearch}" method="get">
+                <input  type="text">
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </li>
     </ul>
     <div class="tab-content bg-transparent">
         <div  id="note-full-container" class="note-has-grid row">

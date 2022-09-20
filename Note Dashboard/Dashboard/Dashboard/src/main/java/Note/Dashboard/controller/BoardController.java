@@ -3,9 +3,11 @@ package Note.Dashboard.controller;
 import Note.Dashboard.entity.Board;
 import Note.Dashboard.entity.CategoryType;
 import Note.Dashboard.entity.Member;
+import Note.Dashboard.entity.OrderSearch;
 import Note.Dashboard.repository.BoardRepository;
 import Note.Dashboard.repository.MemberRepository;
 import Note.Dashboard.service.BoardService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.Modifying;
@@ -34,7 +36,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/Business/{memberId}")
-    public String boardBusiness(@PathVariable("memberId")Long memberId,@ModelAttribute Board board,Model model) {
+    public String boardBusiness(@PathVariable("memberId") Long memberId, @ModelAttribute Board board, Model model) {
         List<Board> findByBusiness = boardRepository.findByCategory(CategoryType.BUSINESS);
         String type = CategoryType.BUSINESS.getDisplayValue();
         Optional<Member> findMember = memberRepository.findById(memberId);
@@ -47,7 +49,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/Social/{memberId}")
-    public String boardSocial(@ModelAttribute Board board,@PathVariable("memberId")Long memberId,Model model) {
+    public String boardSocial(@ModelAttribute Board board, @PathVariable("memberId") Long memberId, Model model) {
         List<Board> findByBusiness = boardRepository.findByCategory(CategoryType.SOCIAL);
         String type = CategoryType.SOCIAL.getDisplayValue();
         Optional<Member> findMember = memberRepository.findById(memberId);
@@ -60,7 +62,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/Important/{memberId}")
-    public String boardImportant(@ModelAttribute Board board,@PathVariable("memberId")Long memberId,Model model) {
+    public String boardImportant(@ModelAttribute Board board, @PathVariable("memberId") Long memberId, Model model) {
         List<Board> findByBusiness = boardRepository.findByCategory(CategoryType.IMPORTANT);
         String type = CategoryType.IMPORTANT.getDisplayValue();
         Optional<Member> findMember = memberRepository.findById(memberId);
@@ -80,14 +82,15 @@ public class BoardController {
     }
 
     @GetMapping("/board/ChangeSocial/{boardId}")
-    public String boardChangeSocial(@PathVariable("boardId")Long boardId) {
+    public String boardChangeSocial(@PathVariable("boardId") Long boardId) {
         boardRepository.updateBoardCategoryType(CategoryType.SOCIAL, boardId);
 
         return "redirect:/";
     }
 
     @GetMapping("/board/ChangeImportant/{boardId}")
-    public String boardChangeImportant(@PathVariable("boardId")Long boardId) { ;
+    public String boardChangeImportant(@PathVariable("boardId") Long boardId) {
+        ;
         boardRepository.updateBoardCategoryType(CategoryType.IMPORTANT, boardId);
         return "redirect:/";
     }
@@ -100,5 +103,10 @@ public class BoardController {
         return "redirect:/";
     }
 
-
+    @GetMapping("/board")
+    public String Search(@ModelAttribute("orderSearch") OrderSearch orderSearch, @ModelAttribute Board board, @ModelAttribute Member member, @RequestParam("title") String title, Model model) {
+        List<Board> result = boardService.findBoardSearch(title);
+        model.addAttribute("boards", result);
+        return "home";
+    }
 }

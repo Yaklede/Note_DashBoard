@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -21,5 +23,9 @@ public class BoardService {
         Board board = new Board(title, content, categoryType, member);
         boardRepository.save(board);
         return board.getId();
+    }
+
+    public List<Board> findBoardSearch(String title) {
+        return boardRepository.findByTitleContaining(title);
     }
 }

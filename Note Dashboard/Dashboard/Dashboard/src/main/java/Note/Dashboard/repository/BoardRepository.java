@@ -26,4 +26,6 @@ public interface BoardRepository extends JpaRepository<Board,Long> {
     @Modifying
     @Query("Update Board b  set b.categoryType = :categoryType where b.id = :id")
     int updateBoardCategoryType(@Param(value = "categoryType") CategoryType categoryType, @Param("id") Long id);
+
+    List<Board> findByTitleContaining(String title);
 }
